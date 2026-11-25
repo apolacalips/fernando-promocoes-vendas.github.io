@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fernando Promoções e Vendas | Fale no WhatsApp</title>
+
+<!-- Cartão de prévia (Facebook, WhatsApp, Telegram).
+     TROQUE o endereço da imagem e da página pelos do seu site. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Internet fibra óptica e TV online">
+<meta property="og:description" content="Toque para falar agora com a Fernando Promoções e Vendas no WhatsApp.">
+<meta property="og:image" content="https://apolacalips.github.io/fernando-promocoes-vendas.github.io/arte-status.jpg">
+<meta property="og:url" content="https://apolacalips.github.io/fernando-promocoes-vendas.github.io/zap-status.html">
+
+<style>
+  :root {
+    --fundo: #f3f6f4;
+    --texto: #14231c;
+    --suave: #51625a;
+    --verde: #128c4a;
+    --verde-escuro: #0d6e3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fundo: #0f1a14;
+      --texto: #eaf3ee;
+      --suave: #9db1a6;
+      --verde: #2fbf71;
+      --verde-escuro: #25a860;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+  }
+  main { max-width: 360px; }
+  h1 { margin: 0 0 8px; font-size: 1.35rem; line-height: 1.3; }
+  p { margin: 0 0 24px; color: var(--suave); line-height: 1.5; }
+  a.botao {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: var(--verde);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  a.botao:hover { background: var(--verde-escuro); }
+  a.botao:focus-visible { outline: 3px solid var(--texto); outline-offset: 3px; }
+</style>
+
+<!-- Google Analytics 4 (gratuito). Troque G-XXXXXXXXXX pelo seu ID de medição. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body>
+<main>
+  <h1>Abrindo o WhatsApp…</h1>
+  <p>Se não abrir sozinho, toque no botão abaixo.</p>
+  <a id="botao" class="botao" href="https://wa.me/5561981261223">Falar no WhatsApp</a>
+</main>
+
+<script>
+(function () {
+  var NUMERO = "5561981261223";
+
+  // Origens aceitas: use  seusite/zap?origem=facebook  (ou grupo, status, marketplace...)
+  var NOMES = {
+    facebook: "Facebook",
+    grupo: "um grupo de WhatsApp",
+    status: "o Status do WhatsApp",
+    marketplace: "o Marketplace",
+    instagram: "o Instagram"
+  };
+
+  var params = new URLSearchParams(window.location.search);
+  var origem = (params.get("origem") || "status").toLowerCase().replace(/[^a-z0-9_-]/g, "");
+  var nome = NOMES[origem];
+
+  var texto = "Olá! Vim pela promoção de fibra óptica" + (nome ? " (pelo/pela " + nome + ")" : "") + ".";
+  var url = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(texto);
+
+  document.getElementById("botao").href = url;
+
+  // Registra o clique (Google Analytics, gratuito) e então abre o WhatsApp.
+  var saiu = false;
+  function ir() { if (!saiu) { saiu = true; window.location.replace(url); } }
+  try {
+    gtag("event", "clique_whatsapp", {
+      origem: origem || "direto",
+      transport_type: "beacon",
+      event_callback: ir
+    });
+  } catch (e) {}
+  setTimeout(ir, 800); // garante a saída mesmo se o Analytics estiver bloqueado
+})();
+</script>
+</body>
+</html>
