@@ -115,37 +115,8 @@ details{transition:border-color .2s,box-shadow .2s}details:hover{border-color:va
 @media(max-width:480px){#luna-panel{right:8px;bottom:138px;width:calc(100vw - 16px);height:min(65dvh,520px)}#luna-launch{right:12px;bottom:82px}}
 
 
-/* ===== Boas-vindas tecnológica e voz da Luna ===== */
-#luna-intro{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 50% 42%,#123e61 0%,#071426 48%,#030711 100%);color:#eafaff;overflow:hidden}
-#luna-intro:before{content:"";position:absolute;width:min(78vw,560px);aspect-ratio:1;border:1px solid #22d3ee55;border-radius:50%;box-shadow:0 0 50px #22d3ee18,inset 0 0 50px #22d3ee18;animation:lunaOrbit 16s linear infinite}
-#luna-intro:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#22d3ee08 4px);pointer-events:none}
-.luna-welcome{position:relative;z-index:1;width:min(440px,100%);text-align:center;padding:34px 24px 28px;border:1px solid #22d3ee66;border-radius:28px;background:#071629d9;box-shadow:0 0 55px #22d3ee24,0 22px 70px #0009;backdrop-filter:blur(14px)}
-.luna-core{width:112px;height:112px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;font-size:42px;color:#aaf7ff;border:1px solid #67e8f9;box-shadow:0 0 18px #22d3ee, inset 0 0 24px #22d3ee55;position:relative;animation:lunaPulse 2.8s ease-in-out infinite}
-.luna-core:before,.luna-core:after{content:"";position:absolute;inset:-12px;border:1px dashed #22d3ee88;border-radius:50%;animation:lunaOrbit 12s linear infinite}
-.luna-core:after{inset:-23px;border-style:solid;border-color:#22d3ee33;animation-direction:reverse;animation-duration:18s}
-.luna-welcome .eyebrow{font:700 .72rem/1.4 ui-monospace,monospace;letter-spacing:.22em;color:#67e8f9;text-transform:uppercase}
-.luna-welcome h2{margin:9px 0;color:#f0fdff;font-size:1.8rem}
-.luna-welcome p{color:#b9d5e7;margin:0 auto 22px;max-width:340px}
-#luna-enter{width:100%;background:linear-gradient(90deg,#0891b2,#22d3ee);color:#03121d;box-shadow:0 0 24px #22d3ee55}
-#luna-silent{margin-top:12px;background:transparent;border:1px solid #67e8f966;color:#c8f6ff;width:100%;box-shadow:none}
-#luna-voice-status{font-size:.75rem;color:#86b7c9;margin-top:13px;min-height:18px}
-@keyframes lunaOrbit{to{transform:rotate(360deg)}}
-@keyframes lunaPulse{0%,100%{transform:scale(.98);box-shadow:0 0 18px #22d3ee, inset 0 0 24px #22d3ee55}50%{transform:scale(1.04);box-shadow:0 0 34px #22d3ee,inset 0 0 30px #22d3ee77}}
-@media(prefers-reduced-motion:reduce){#luna-intro:before,.luna-core,.luna-core:before,.luna-core:after{animation:none!important}}
-
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="bgs b1 on"></div><div class="bgs b2"></div><div class="bgs b3"></div><i style="--t:18%;--d:0s"></i><i style="--t:48%;--d:2.5s"></i><i style="--t:78%;--d:4.5s"></i></div>
-<div id="luna-intro" role="dialog" aria-modal="true" aria-labelledby="luna-welcome-title">
-  <div class="luna-welcome">
-    <div class="luna-core" aria-hidden="true">🌙</div>
-    <div class="eyebrow">Sistema de atendimento iniciado</div>
-    <h2 id="luna-welcome-title">Olá, eu sou a Luna</h2>
-    <p>Seja bem-vindo! Estou aqui para ajudar você a encontrar sua internet fibra óptica ou conhecer nossos planos de TV online.</p>
-    <button id="luna-enter" type="button">▶ Ativar voz e entrar</button>
-    <button id="luna-silent" type="button">Entrar sem áudio</button>
-    <div id="luna-voice-status" aria-live="polite">Voz feminina em português, quando disponível no seu dispositivo.</div>
-  </div>
-</div>
 <header><b>📡 fernando.promocoes.vendas</b><nav><a href="#internet">Internet</a><a href="#tv">TV online</a><a href="#como">Como funciona</a><a href="#indique">Indique e Ganhe</a><a href="#faq">Dúvidas</a></nav><button id="bc" aria-label="Abrir carrinho">🛒 <span id="cn">0</span></button></header>
 <div class="hero"><div><h1>Fibra óptica e TV online com preço de promoção</h1><p>Internet estável, instalação rápida e suporte direto no WhatsApp. Atendimento em vários estados do Brasil.</p><div class="row"><a class="btn" href="#viabilidade">Consultar viabilidade</a><a class="btn alt" href="#tv">TV: teste grátis</a></div><div class="stats"><span>Vários estados do Brasil</span><span>Wi-Fi incluso</span><span>Fibra óptica de alta velocidade</span><span>Teste grátis de TV</span><span>Suporte humano</span></div><div class="lk"><span id="lu"></span><a class="btn alt" id="lw" target="_blank" rel="noopener" href="#">Enviar no WhatsApp</a></div></div></div>
 <div class="mq" aria-label="Categorias de canais"><div class="mt" id="mt"></div></div>
@@ -364,61 +335,5 @@ document.addEventListener("click",function(e){var t=e.target.closest("[data-tv]"
   });
 })();
 
-
-/* ===== Saudação por voz da Luna (sem serviços pagos externos) ===== */
-(function(){
-  var intro=document.getElementById('luna-intro');
-  var enter=document.getElementById('luna-enter');
-  var silent=document.getElementById('luna-silent');
-  var status=document.getElementById('luna-voice-status');
-  if(!intro||!enter||!silent)return;
-  var greeting='Olá! Seja bem-vindo à Fernando Promoções e Vendas. Eu sou a Luna, sua assistente virtual. Posso ajudar você a conhecer as opções de internet fibra óptica e TV online. Quando quiser, é só abrir meu atendimento. Será um prazer ajudar!';
-  function closeIntro(){intro.style.opacity='0';intro.style.transition='opacity .35s ease';setTimeout(function(){intro.style.display='none'},380)}
-  function chime(){
-    try{
-      var C=window.AudioContext||window.webkitAudioContext;if(!C)return;
-      var ctx=new C();var now=ctx.currentTime;
-      [523.25,783.99,1046.5].forEach(function(freq,i){
-        var osc=ctx.createOscillator(),gain=ctx.createGain();
-        osc.type='sine';osc.frequency.value=freq;
-        gain.gain.setValueAtTime(.0001,now+i*.11);
-        gain.gain.exponentialRampToValueAtTime(.055,now+i*.11+.025);
-        gain.gain.exponentialRampToValueAtTime(.0001,now+i*.11+.22);
-        osc.connect(gain);gain.connect(ctx.destination);
-        osc.start(now+i*.11);osc.stop(now+i*.11+.24);
-      });
-      setTimeout(function(){ctx.close()},1000);
-    }catch(e){}
-  }
-  function getVoice(){
-    if(!window.speechSynthesis)return null;
-    var voices=window.speechSynthesis.getVoices()||[];
-    var pt=voices.filter(function(v){return /^pt(-|_)?br$/i.test(v.lang)||/^pt/i.test(v.lang)});
-    var female=pt.find(function(v){return /female|francisca|luciana|camila|google português|microsoft.*(female|francisca)|brasil/i.test(v.name)});
-    return female||pt[0]||null;
-  }
-  enter.addEventListener('click',function(){
-    chime();
-    if(!('speechSynthesis' in window)){
-      status.textContent='A voz não está disponível neste navegador. Você pode continuar pelo chat.';
-      closeIntro();return;
-    }
-    try{
-      window.speechSynthesis.cancel();
-      var utterance=new SpeechSynthesisUtterance(greeting);
-      var voice=getVoice();
-      utterance.lang=voice?voice.lang:'pt-BR';
-      if(voice)utterance.voice=voice;
-      utterance.rate=.94;utterance.pitch=1.08;utterance.volume=1;
-      utterance.onstart=function(){status.textContent='Luna está falando…'};
-      utterance.onerror=function(){status.textContent='Não foi possível iniciar a voz. Você pode continuar sem áudio.'};
-      utterance.onend=function(){status.textContent='Saudação concluída. Bem-vindo!'};
-      window.speechSynthesis.speak(utterance);
-      closeIntro();
-    }catch(e){status.textContent='Não foi possível iniciar a voz neste dispositivo.';closeIntro()}
-  });
-  silent.addEventListener('click',function(){closeIntro()});
-  if('speechSynthesis' in window){window.speechSynthesis.getVoices();window.speechSynthesis.addEventListener&&window.speechSynthesis.addEventListener('voiceschanged',function(){});}
-})();
 
 </script></body></html>
