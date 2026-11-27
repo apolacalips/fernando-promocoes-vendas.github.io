@@ -17,7 +17,7 @@ body.lx-lock{overflow:hidden}
 #luna-launch{display:flex;align-items:center;gap:8px;backdrop-filter:blur(10px)}#luna-launch .lx-av{width:26px;height:26px}
 #luna-panel{backdrop-filter:blur(16px);background:#0d1730ee}
 /* Entrada cinematográfica */
-#lx-intro{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;background:radial-gradient(600px 420px at 50% 40%,#0e3a7a99,transparent),#02050d;color:#e8f0ff;transition:opacity .7s,transform .7s,visibility .7s}
+#lx-intro{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;background:radial-gradient(600px 420px at 50% 40%,#0e3a7a99,transparent),#02050d;color:#e8f0ff;transition:opacity .35s,transform .35s,visibility .35s}
 #lx-intro.out{opacity:0;transform:scale(1.08);visibility:hidden;pointer-events:none}
 #lx-intro .lx-av{width:132px;height:132px;animation:lxf 5s ease-in-out infinite}
 #lx-intro .lx-av:after{content:""}
@@ -33,3 +33,8 @@ body.lx-lock{overflow:hidden}
 #lx-orb{position:fixed;z-index:-1;pointer-events:none;width:min(46vw,340px);aspect-ratio:1;right:6vw;top:18vh;border-radius:50%;background:radial-gradient(circle at 35% 30%,#bff4ff88,#22d3ee33 35%,#2563eb22 60%,transparent 70%);box-shadow:0 0 80px #22d3ee44,inset 0 0 60px #22d3ee33;border:1px solid #22d3ee55;animation:lxf 7s ease-in-out infinite}
 @media(max-width:720px){#lx-orb{right:50%;transform:translateX(50%);top:12vh;width:56vw}}
 @media(prefers-reduced-motion:reduce){#lx-intro *{animation:none!important}#lx-orb,.lx-av,.lx-ai i{animation:none!important}}
+
+#lx-snd{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;align-items:center;gap:8px;padding:5px 12px 5px 5px;border-radius:999px;background:#050914cc;border:1px solid #22d3ee88;backdrop-filter:blur(10px)}
+#lx-sb{width:36px;height:36px;padding:0;border-radius:50%;background:#22d3ee22;color:#fff;font-size:1.05rem;box-shadow:none}
+#lx-vol{width:84px;accent-color:#22d3ee}
+#lx-go{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
