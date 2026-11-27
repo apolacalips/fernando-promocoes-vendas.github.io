@@ -1,0 +1,35 @@
+/* Luna 3D — camada visual extra. Não altera style.css */
+#lx-cv{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;transition:opacity .4s}
+body.lx-lock{overflow:hidden}
+/* Vidro (glassmorphism) */
+.card,.sl,.steps div,details,.free,.apps,.tut,.res{background:linear-gradient(160deg,#ffffff14,#ffffff06)!important;backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-color:#22d3ee44!important;box-shadow:inset 0 1px 0 #ffffff22,0 8px 30px #0006}
+.alt-bg{background:#050914aa!important}
+.hero h1{background:linear-gradient(90deg,#fff,#9ff3ff 60%,#ffb36b);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Selo IA ativa */
+.lx-ai{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;color:#bff4ff;border:1px solid #22d3ee66;background:#22d3ee14;border-radius:999px;padding:3px 10px}
+.lx-ai i{width:8px;height:8px;border-radius:50%;background:#34f5a1;box-shadow:0 0 10px #34f5a1;animation:lxp 1.6s ease-in-out infinite}
+@keyframes lxp{50%{opacity:.35;transform:scale(.7)}}
+/* Avatar */
+.lx-av{width:34px;height:34px;flex:none;filter:drop-shadow(0 0 8px #22d3ee99)}
+.lx-talk .lx-av .mo{animation:lxm .22s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes lxm{to{transform:scaleY(2.2)}}
+#luna-head .lx-av{width:30px;height:30px}
+#luna-launch{display:flex;align-items:center;gap:8px;backdrop-filter:blur(10px)}#luna-launch .lx-av{width:26px;height:26px}
+#luna-panel{backdrop-filter:blur(16px);background:#0d1730ee}
+/* Entrada cinematográfica */
+#lx-intro{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;background:radial-gradient(600px 420px at 50% 40%,#0e3a7a99,transparent),#02050d;color:#e8f0ff;transition:opacity .7s,transform .7s,visibility .7s}
+#lx-intro.out{opacity:0;transform:scale(1.08);visibility:hidden;pointer-events:none}
+#lx-intro .lx-av{width:132px;height:132px;animation:lxf 5s ease-in-out infinite}
+#lx-intro .lx-av:after{content:""}
+#lx-intro h2{font-size:clamp(2rem,9vw,3.4rem);margin:0;letter-spacing:.18em;animation:lxi 1s .2s both}
+#lx-intro p{margin:0;color:#93a4c8;max-width:34ch;animation:lxi 1s .5s both}
+#lx-bar{width:min(260px,70vw);height:3px;border-radius:3px;background:#1b2a50;overflow:hidden}
+#lx-bar:after{content:"";display:block;height:100%;background:linear-gradient(90deg,#22d3ee,#ff7a00);animation:lxb 1.6s .3s ease-out both}
+#lx-go{margin-top:6px;animation:lxi .8s 1.7s both}
+@keyframes lxb{from{width:0}to{width:100%}}
+@keyframes lxi{from{opacity:0;transform:translateY(16px)}}
+@keyframes lxf{50%{transform:translateY(-8px)}}
+/* Alternativa leve (sem 3D) */
+#lx-orb{position:fixed;z-index:-1;pointer-events:none;width:min(46vw,340px);aspect-ratio:1;right:6vw;top:18vh;border-radius:50%;background:radial-gradient(circle at 35% 30%,#bff4ff88,#22d3ee33 35%,#2563eb22 60%,transparent 70%);box-shadow:0 0 80px #22d3ee44,inset 0 0 60px #22d3ee33;border:1px solid #22d3ee55;animation:lxf 7s ease-in-out infinite}
+@media(max-width:720px){#lx-orb{right:50%;transform:translateX(50%);top:12vh;width:56vw}}
+@media(prefers-reduced-motion:reduce){#lx-intro *{animation:none!important}#lx-orb,.lx-av,.lx-ai i{animation:none!important}}
